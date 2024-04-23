@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jersey+25&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lenis@1.0.44/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border: unset;
+        outline: none;
+      }
+      html,
+      body {
+        width: 100%;
+        scroll-behavior: none;
+        min-height: 100%;
+      }
+      section {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        height: 100vh;
+        margin: 0 auto;
+      }
+
+      .gallery {
+        height: 200vh;
+      }
+
+      .img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-size: cover;
+        z-index: -1;
+
+        &:nth-of-type(1) {
+          background-image: url("https://plus.unsplash.com/premium_photo-1683910767532-3a25b821f7ae?q=80&w=3508&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        }
+        &:nth-of-type(2) {
+          background-image: url("https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        }
+        &:nth-of-type(3) {
+          background-image: url("https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=3574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        }
+        &:nth-of-type(4) {
+          background-image: url("https://images.unsplash.com/photo-1530076886461-ce58ea8abe24?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D");
+        }
+        &:nth-of-type(5) {
+          background-image: url("https://plus.unsplash.com/premium_photo-1661889099855-b44dc39e88c9?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D");
+        }
+        &:nth-of-type(6) {
+          background-image: url("https://images.unsplash.com/photo-1570051008600-b34baa49e751?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZyZWUlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D");
+        }
+        &:nth-of-type(7) {
+          background-image: url("https://plus.unsplash.com/premium_photo-1683910767532-3a25b821f7ae?q=80&w=3508&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        }
+        &:nth-of-type(8) {
+          background-image: url("https://images.unsplash.com/photo-1586810724476-c294fb7ac01b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGZyZWUlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D");
+        }
+        &:nth-of-type(9) {
+          background-image: url("https://plus.unsplash.com/premium_photo-1683910767532-3a25b821f7ae?q=80&w=3508&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          height: 100vh;
+          width: 100%;
+          z-index: 4;
+          top: 0;
+          left: 0;
+          border-right: 0.5px solid black;
+        }
+      }
+
+      .line {
+        border-right: 0.5px solid black;
+      }
+      h1 {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) skewX(-20deg);
+        mix-blend-mode: overlay;
+        text-transform: uppercase;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-size: 3rem;
+        font-weight: 900;
+        color: #fff;
+        font-family: "Jersey 25", sans-serif;
+        /* font-weight: 400; */
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>So Slick</h1>
+    <section>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </section>
+
+    <section>
+      <div class="img"></div>
+      <div class="img"></div>
+      <div class="img"></div>
+      <div class="img"></div>
+      <div class="img"></div>
+      <div class="img"></div>
+      <div class="img"></div>
+      <div class="img"></div>
+      <div class="img"></div>
+    </section>
+  </body>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    const tl = gsap
+      .timeline({
+        scrollTrigger: { trigger: ".img", scrub: true },
+      })
+      .to(".img", {
+        stagger: 0.2,
+        y: -200,
+        scrub: true,
+      });
+  </script>
+</html>
